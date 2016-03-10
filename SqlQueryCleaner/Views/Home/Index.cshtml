@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-5">
+                <h2>Add Messy Query Here</h2>
+                <textarea id="dirtyQuery" cols="60" rows="20"></textarea>
+            </div>
+            <div class="col-xs-2">
+                <a class="btn btn-primary" data-role="clean-query">Clean Query Please</a>
+            </div>
+            <div class="col-xs-5">
+                <h2>Cleaned Query</h2>
+                <textarea id="cleanQuery" cols="60" rows="20"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    @section scripts
+{
+        <script>
+            $(function () {
+
+                var actions = {
+                    submitQuery: function (value) {
+                        $.ajax({
+                            url: "@Url.Action("CleanQuery", "home")",
+                            type: 'POST',
+                            data: { query: value },
+                            dataType: 'json',
+                            success: function (response) {
+                                console.log(response);
+                                $("#cleanQuery").val(response.message);
+                            }
+                        });
+                    }
+                }
+
+                $("[data-role='clean-query']").on("click", function () {
+                    actions.submitQuery($("#dirtyQuery").val());
+                });
+            });
+        </script>
+    }
