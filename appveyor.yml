@@ -9,7 +9,7 @@ build:
   verbosity: minimal
 artifacts:
 - path: '*'
-  name: SqlQueryCleaner.zip
+  name: SqlQueryCleaner
   type: WebDeployPackage
 deploy:
 - provider: WebDeploy
