@@ -19,4 +19,4 @@ deploy:
   password: Yu0CT0ADbnXq0HGPPrdiNpP7juWjcwYNRA6Y6KZdLJuCKctreKhWKn4jasYS
   ntlm: disabled
   remove_files: false
-  artifact:
+  artifact: SqlQueryCleaner.zip
