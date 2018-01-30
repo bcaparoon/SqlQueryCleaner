@@ -1,0 +1,22 @@
+version: 1.0.{build}
+build:
+  project: SqlQueryCleaner.sln
+  publish_wap: true
+  publish_azure: true
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
+  verbosity: minimal
+artifacts:
+- path: '*'
+  name: SqlQueryCleaner
+  type: WebDeployPackage
+deploy:
+- provider: WebDeploy
+  server: https://evolvtestbo-dev.scm.azurewebsites.net:443/msdeploy.axd?site=evolvtestbo__Dev
+  website: evolvtestbo__Dev
+  username: $evolvtestbo__Dev
+  password: Yu0CT0ADbnXq0HGPPrdiNpP7juWjcwYNRA6Y6KZdLJuCKctreKhWKn4jasYS
+  ntlm: disabled
+  remove_files: false
+  artifact:
